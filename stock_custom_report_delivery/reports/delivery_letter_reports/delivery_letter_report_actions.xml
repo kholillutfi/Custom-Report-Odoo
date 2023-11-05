@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <record id="delievery_letter_report_action" model="ir.actions.report">
+            <field name="name">Delievery Letter</field>
+            <field name="model">stock.picking</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">stock_custom_report_delivery.delivery_letter_report_template</field>
+            <field name="report_file">stock_custom_report_delivery.reports.delivery_letter.delivery_letter_report_action</field>
+            <field name="paperformat_id" ref="stock_custom_report_delivery.delivery_letter_report_paperformat"/>
+            <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        </record>
+    </data>
+</odoo>
