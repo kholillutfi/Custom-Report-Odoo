@@ -6,13 +6,13 @@
 
                 <t t-foreach="docs" t-as="stock">
                     <div class="page" style="padding: 5px;">
-                        <header class="header" style="display: flex; width: 100%; justify-content: space-between;">
+                        <header class="header" style="display: flex !important; width: 100% !important; justify-content: space-between !important;">
                             <img t-attf-src="data:image/webp;base64,{{stock.company_id.logo}}" style="height: 65px; width: 25%;"/>
                             <p style="margin-top: 7px; margin-left: 10px; width: 33%; font-size: 26px; font-weight: bold;">DELIVERY LETTER</p>
-                            <p style="margin: 41px 0 0 0; width: 35%; font-size: 13px; text-align: center;">DEU/IV/LOG/015/00/23</p>
+                            <p style="margin: 41px 0 0 0; width: 35%; font-size: 13px; text-align: center;">DEU/IV/LOG/015/00/23</p>    
                         </header>
                         
-                        <div class="body" style="display: flex; width: 100%; justify-content: space-between; align-items: start; font-size: 13px; margin-bottom: 20px;">
+                        <div class="body" style="display: flex !important; width: 100% !important; justify-content: space-between !important; align-items: start; font-size: 13px; margin-bottom: 20px;">
                             <div class="pengirim" style="border: 1px solid; width: 30%; border: 1px solid; min-height: 130px;">
                                 <div style="margin-bottom: 5px;">Pengirim :</div>
                                 <div style="text-align: center;"><t t-esc="stock.company_id.name"/></div>
@@ -24,13 +24,13 @@
                                 <div style="margin-bottom: 5px;">Penerima :</div>
                                 <div><t t-esc="stock.partner_id.name"/></div>
                                 <hr style="border: 1px solid; width: 99%;"/>
-                                <div><t t-esc="stock.partner_id.street"/> <br/> <t t-esc="stock.partner_id.city"/> <br/> ADM. Mr. edi <br/> <t t-esc="stock.partner_id.phone"/> </div>
+                                <div><t t-esc="stock.partner_id.street"/> <br/> <t t-esc="stock.partner_id.city"/> <br/> <t t-esc="stock.partner_id.phone"/> </div>
                             </div>
                             
                             <div class="table" style="border: 1px solid; width: 35%; border: 1px solid; min-height: 130px;">
                                 <table style="font-size: 13px;">
                                     <tr>
-                                        <td style="width: 53%;">Tanggal</td>
+                                        <td style="width: 52%;">Tanggal</td>
                                         <td>:</td>
                                         <td><t t-esc="stock.scheduled_date.strftime('%d %B %Y')"/></td>
                                     </tr>
