@@ -5,14 +5,14 @@
             <t t-call="web.html_container">
 
                 <t t-foreach="docs" t-as="stock">
-                    <div class="page" style="padding: 5px;">
-                        <header class="header" style="display: flex !important; width: 100% !important; justify-content: space-between !important;">
-                            <img t-attf-src="data:image/webp;base64,{{stock.company_id.logo}}" style="height: 65px; width: 25%;"/>
-                            <p style="margin-top: 7px; margin-left: 10px; width: 33%; font-size: 26px; font-weight: bold;">DELIVERY LETTER</p>
-                            <p style="margin: 41px 0 0 0; width: 35%; font-size: 13px; text-align: center;">DEU/IV/LOG/015/00/23</p>    
+                    <div class="page">
+                        <header class="header" style="display: -webkit-box; width: 100%; -webkit-box-pack: justify;">
+                            <img t-attf-src="data:image/webp;base64,{{stock.company_id.logo}}" style="height: 65px; width: 230px;"/>
+                            <p style="width: 31%; padding-top: 10px; font-size: 26px; font-weight: bold;">DELIVERY LETTER</p>
+                            <p style="width: 35%; padding-top: 45px; font-size: 13px; text-align: center;">DEU/IV/LOG/015/00/23</p>    
                         </header>
                         
-                        <div class="body" style="display: flex !important; width: 100% !important; justify-content: space-between !important; align-items: start; font-size: 13px; margin-bottom: 20px;">
+                        <div class="body" style="display: -webkit-box; width: 100%; -webkit-box-pack: justify; align-items: start; font-size: 13px; margin-bottom: 20px;">
                             <div class="pengirim" style="border: 1px solid; width: 30%; border: 1px solid; min-height: 130px;">
                                 <div style="margin-bottom: 5px;">Pengirim :</div>
                                 <div style="text-align: center;"><t t-esc="stock.company_id.name"/></div>
@@ -28,11 +28,11 @@
                             </div>
                             
                             <div class="table" style="border: 1px solid; width: 35%; border: 1px solid; min-height: 130px;">
-                                <table style="font-size: 13px;">
+                                <table style="font-size: 13px; width: 100%;">
                                     <tr>
-                                        <td style="width: 52%;">Tanggal</td>
+                                        <td style="width: 50%;">Tanggal</td>
                                         <td>:</td>
-                                        <td><t t-esc="stock.scheduled_date.strftime('%d %B %Y')"/></td>
+                                        <td style="width: 50%;"><t t-esc="stock.scheduled_date.strftime('%d %B %Y')"/></td>
                                     </tr>
                                     <tr>
                                         <td>No. Surat Jalan</td>

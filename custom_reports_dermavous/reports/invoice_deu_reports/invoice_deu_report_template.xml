@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="invoice_deu_report_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="account">
+                    <div class="page" style="padding: 10px 35px 0 5px;">
+                        <header class="header" style="display: -webkit-box; width: 100%; margin-bottom: 10px;">
+                            <h2 style="width: 80%;"><t t-esc="account.company_id.name"/></h2> 
+                            <h2 style="width: 20%; text-align: right;">Invoice</h2> 
+                        </header>
+                        <div class="logo" style="margin-bottom: 40px;">
+                            <img t-attf-src="data:image/webp;base64,{{account.company_id.logo}}" style="width: 320px; height: 80px; padding-left: 40px;"/>
+                        </div>
+
+                        <div class="header-street" style="display: -webkit-box; width: 100%; margin-bottom: 30px;">
+                            <div class="bill_to" style="width: 50%;">
+                                <table style="width: 60%; font-size: 13px;">
+                                    <tr>
+                                        <td style="border: 1px solid; padding-left: 10px;"><b>Bill to</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 10px;"><t t-esc="account.partner_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 10px;"><t t-esc="account.partner_id.street"/></td>
+                                    </tr>
+
+                                    <t t-if="account.partner_id.street2">
+                                        <tr>
+                                            <td style="padding-left: 10px;"><t t-esc="account.partner_id.street2"/></td>
+                                        </tr>
+                                    </t>
+                                    <t t-else="">
+                                    </t>
+
+                                    <tr>
+                                        <td style="padding-left: 10px;"><t t-esc="account.partner_id.city"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 10px;">NPWP: <t t-esc="account.partner_id.vat"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="table" style="width: 50%;">
+                                <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                                    <tr>
+                                        <td style="width: 50%; padding-left: 40px;">Date:</td>
+                                        <td style="border: 1px solid; width: 50%;"><t t-esc="account.invoice_date.strftime('%B %d, %Y')"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 40px;">Invoice No:</td>
+                                        <td style="border: 1px solid;"><t t-esc="account.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 40px;">Purchase Order:</td>
+                                        <td style="border: 1px solid;">
+                                        <t t-if="account.purchase_id">
+                                            <t t-esc="account.purchase_id.name"/>
+                                        </t>
+                                        <t t-else="">
+                                            -
+                                        </t>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 40px;">Payment Due by:</td>
+                                        <td style="border: 1px solid;"><t t-esc="account.invoice_date_due.strftime('%B %d, %Y')"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="body" style="margin-bottom: 15px;">
+                            <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                                <tr style="text-align: center; font-weight: bold;">
+                                    <td style="border: 1px solid;">Item</td>
+                                    <td style="border: 1px solid;">Description</td>
+                                    <td colspan="2" style="border: 1px solid;">Qty</td>
+                                    <td style="border: 1px solid;">Unit Price</td>
+                                    <td style="border: 1px solid;">Line Total</td>
+                                </tr>
+                                <t t-set="sequence" t-value="1"/>
+                                <t t-foreach="account.invoice_line_ids" t-as="lines">
+                                    <tr>
+                                        <td style="border: 1px solid; text-align: center; width: 6%;"><t t-esc="sequence"/></td>
+                                        <td style="border: 1px solid; text-align: center; width: 48%;"><t t-esc="lines.product_id.name"/></td>
+                                        <td style="border: 1px solid; text-align: center; width: 8%;"><t t-esc="int(lines.quantity)"/></td>
+                                        <td style="border: 1px solid; text-align: center; width: 6%;"><t t-esc="lines.product_uom_id.name"/></td>
+                                        <td style="border: 1px solid; text-align: right; width: 15%;"><t t-esc="'{:,.0f}'.format(lines.price_unit)"/></td>
+                                        <td style="border: 1px solid; text-align: right;"><t t-esc="'{:,.0f}'.format(lines.price_subtotal + lines.sh_discounted_total_amount)"/></td>
+                                    </tr>
+                                    <t t-set="sequence" t-value="sequence+1"/>
+                                </t>
+                            </table>
+                        </div>
+
+                        <footer class="footer" style="display: -webkit-box; width: 100%;">
+                            <div class="street-foot" style="width: 68%;">
+                                <table style="width: 79.5%; border-top: 1px solid; border-right: 1px solid; border-left: 1px solid;">
+                                    <tr>
+                                        <td style="padding-left: 10px; font-weight: bold; font-size: 13px;">Special Notes and Instructions</td>
+                                    </tr>
+                                </table>
+
+                                <table style="width: 79.5%; border: 1px solid;">
+                                    <tr>
+                                        <td style="padding-left: 10px; font-size: 11px;">Please Transfer To A/C Name : <t t-esc="account.company_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 10px; font-size: 11px;">Bank : PT. Bank Central Asia</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 10px; font-size: 11px;">Address : <t t-esc="account.company_id.street"/>, <t t-esc="account.company_id.city"/> - <t t-esc="account.company_id.country_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 10px; font-size: 11px;">A/C No : 327-4212417 A/C Currency : <t t-esc="account.company_id.currency_id.name"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="currency-foot" style="width: 32%;">
+                                <table style="width: 100%; font-size: 13px; margin-bottom: 70px;">
+                                    <tr>
+                                        <td style="width: 47%;">Sub Total</td>
+                                        <td style="width: 15%;"><t t-esc="account.company_id.currency_id.name"/></td>
+                                        <t t-set="subtotal" t-value="account.invoice_line_ids.mapped('price_subtotal') + account.invoice_line_ids.mapped('sh_discounted_total_amount')"/>
+                                        <td style="text-align: right;"><t t-esc="'{:,.0f}'.format(sum(subtotal))"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Discount</td>
+                                        <td><t t-esc="account.company_id.currency_id.name"/></td>
+                                        <td style="text-align: right;">
+                                            <t t-if="account.invoice_line_ids.mapped('sh_discounted_total_amount')">
+                                                <t t-esc="'{:,.0f}'.format(sum(account.invoice_line_ids.mapped('sh_discounted_total_amount')))"/>
+                                            </t>
+                                            <t t-else="">
+                                                -
+                                            </t>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>VAT(11%)</td>
+                                        <td><t t-esc="account.company_id.currency_id.name"/></td>
+                                        <td style="text-align: right;">
+                                            <t t-if="account.amount_by_group">
+                                                <t t-esc="'{:,.0f}'.format(account.find_index(account.amount_by_group))"/>
+                                            </t>
+                                            <t t-else="">
+                                                -
+                                            </t>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Grand Total</b></td>
+                                        <td><b><t t-esc="account.company_id.currency_id.name"/></b></td>
+                                        <td style="text-align: right;"><b><t t-esc="'{:,.0f}'.format(account.amount_total)"/></b></td>
+                                    </tr>
+                                </table>
+                                
+                                <div class="bottom-foot" style="font-size: 13px; text-align: center;">
+                                    <p style="margin-bottom: 100px;">Sincererly Yours,</p>
+                                    <p>Kartika Martha Lisa</p>
+                                </div>
+                            </div>
+                        </footer>
+
+                    </div>
+
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

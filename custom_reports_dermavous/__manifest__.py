@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Stock Custom Report - Delivery",
+    'name': "Custom Reports - Dermavous",
 
     'summary': """
         General Features
         - Delivery Letter Report 
+        - Invoice Deu
         """,
 
     'description': """
@@ -39,6 +40,9 @@
         'reports/delivery_letter_reports/delivery_letter_report_paperformat.xml',
         'reports/delivery_letter_reports/delivery_letter_report_template.xml',
         'reports/delivery_letter_reports/delivery_letter_report_actions.xml',
+        'reports/invoice_deu_reports/invoice_deu_report_paperformat.xml',
+        'reports/invoice_deu_reports/invoice_deu_report_template.xml',
+        'reports/invoice_deu_reports/invoice_deu_report_actions.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

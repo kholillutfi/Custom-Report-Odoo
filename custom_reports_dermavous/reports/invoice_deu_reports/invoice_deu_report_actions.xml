@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <record id="invoice_deu_report_action" model="ir.actions.report">
+            <field name="name">invoice_deu</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">custom_reports_dermavous.invoice_deu_report_template</field>
+            <field name="report_file">custom_reports_dermavous.reports.invoice_deu_reports.invoice_deu_report_action</field>
+            <field name="paperformat_id" ref="custom_reports_dermavous.invoice_deu_report_paperformat"/>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+        </record>
+    </data>
+</odoo>
