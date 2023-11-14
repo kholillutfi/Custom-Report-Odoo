@@ -4,8 +4,8 @@
         <template id="invoice_deu_report_template">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="account">
-                    <div class="page" style="padding: 10px 35px 0 5px;">
-                        <header class="header" style="display: -webkit-box; width: 100%; margin-bottom: 10px;">
+                    <div class="page" style="padding: 10px 5px 0 5px;">
+                        <header class="header" style="display: -webkit-box; width: 96%; margin-bottom: 20px;">
                             <h2 style="width: 80%;"><t t-esc="account.company_id.name"/></h2> 
                             <h2 style="width: 20%; text-align: right;">Invoice</h2> 
                         </header>
@@ -13,11 +13,11 @@
                             <img t-attf-src="data:image/webp;base64,{{account.company_id.logo}}" style="width: 320px; height: 80px; padding-left: 40px;"/>
                         </div>
 
-                        <div class="header-street" style="display: -webkit-box; width: 100%; margin-bottom: 30px;">
+                        <div class="header-street" style="display: -webkit-box; width: 96%; margin-bottom: 40px;">
                             <div class="bill_to" style="width: 50%;">
                                 <table style="width: 60%; font-size: 13px;">
                                     <tr>
-                                        <td style="border: 1px solid; padding-left: 10px;"><b>Bill to</b></td>
+                                        <td style="border: 1px solid black; background-color: rgb(12, 73, 165); color: white; padding-left: 10px;"><b>Bill to</b></td>
                                     </tr>
                                     <tr>
                                         <td style="padding-left: 10px;"><t t-esc="account.partner_id.name"/></td>
@@ -73,13 +73,13 @@
                         </div>
 
                         <div class="body" style="margin-bottom: 15px;">
-                            <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
-                                <tr style="text-align: center; font-weight: bold;">
-                                    <td style="border: 1px solid;">Item</td>
-                                    <td style="border: 1px solid;">Description</td>
-                                    <td colspan="2" style="border: 1px solid;">Qty</td>
-                                    <td style="border: 1px solid;">Unit Price</td>
-                                    <td style="border: 1px solid;">Line Total</td>
+                            <table style="width: 96%; border-collapse: collapse; font-size: 13px;">
+                                <tr style="text-align: center; font-weight: bold; color: white;">
+                                    <td style="border: 1px solid black; background-color: rgb(12, 73, 165);">Item</td>
+                                    <td style="border: 1px solid black; background-color: rgb(12, 73, 165);">Description</td>
+                                    <td colspan="2" style="border: 1px solid black; background-color: rgb(12, 73, 165);">Qty</td>
+                                    <td style="border: 1px solid black; background-color: rgb(12, 73, 165);">Unit Price</td>
+                                    <td style="border: 1px solid black; background-color: rgb(12, 73, 165);">Line Total</td>
                                 </tr>
                                 <t t-set="sequence" t-value="1"/>
                                 <t t-foreach="account.invoice_line_ids" t-as="lines">
@@ -96,9 +96,9 @@
                             </table>
                         </div>
 
-                        <footer class="footer" style="display: -webkit-box; width: 100%;">
+                        <footer class="footer" style="display: -webkit-box; width: 96%;">
                             <div class="street-foot" style="width: 68%;">
-                                <table style="width: 79.5%; border-top: 1px solid; border-right: 1px solid; border-left: 1px solid;">
+                                <table style="width: 79.5%; border-top: 1px solid black; border-right: 1px solid black; border-left: 1px solid black; background-color: rgb(12, 73, 165); color: white;">
                                     <tr>
                                         <td style="padding-left: 10px; font-weight: bold; font-size: 13px;">Special Notes and Instructions</td>
                                     </tr>
@@ -164,6 +164,12 @@
                                     <p>Kartika Martha Lisa</p>
                                 </div>
                             </div>
+                        </footer>
+
+                        <footer class="footer2" style="text-align: center; width: 90%; margin: auto;">
+                            <p style="margin-bottom: 10px; font-size: 22px; font-weight: 400;">Thank You For Your business</p>
+                            <div style="border-bottom: 1px solid; font-size: 13px;">Make all checks payable to <t t-esc="account.company_id.name"/> <br/> Thank you for your business <br/> Any enquiris concerning this invoice, please contact Kartika Martha Lisa,S.Farm.,Apt.on+6287843150134</div>
+                            <div style="font-size: 13px;"> <t t-esc="account.company_id.street"/> ,<t t-esc="account.company_id.city"/>, <t t-esc="account.company_id.state_id.name"/>, <t t-esc="account.company_id.country_id.name"/>, <t t-esc="account.company_id.zip"/> <br/> Telp: <t t-esc="account.company_id.phone"/> Fax: 0271-8201641 E-mail: <t t-esc="account.company_id.email"/></div>
                         </footer>
 
                     </div>
