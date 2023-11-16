@@ -4,7 +4,7 @@
         <template id="invoice_deu_report_template">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="account">
-                    <div class="page" style="padding: 10px 5px 0 5px; background: white;">
+                    <div class="page" style="padding: 10px 5px 0 5px;">
                         <header class="header" style="display: -webkit-box; width: 96%; margin-bottom: 20px;">
                             <h2 style="width: 80%;"><t t-esc="account.company_id.name"/></h2> 
                             <h2 style="width: 20%; text-align: right;">Invoice</h2> 
