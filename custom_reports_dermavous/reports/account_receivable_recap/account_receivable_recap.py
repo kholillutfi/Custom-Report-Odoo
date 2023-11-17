@@ -15,20 +15,21 @@ class AccountMoveRecap(models.AbstractModel):
         body_table_tyle_else = workbook.add_format({'border': 1,'align': 'center', 'color': 'red'})
 
 
-        row = 1
-        col = 1
+        row = 0
+        col = 0
 
         sheet = workbook.add_worksheet("Rekap Faktur Akun Piutang Usaha")
-        sheet.set_column('C:C', 20)
+        sheet.set_column('B:B', 23)
+        sheet.set_column('C:C', 35)
         sheet.set_column('D:D', 25)
-        sheet.set_column('E:E', 25)
-        sheet.set_column('F:F', 30)
+        sheet.set_column('E:E', 32)
+        sheet.set_column('F:F', 20)
         sheet.set_column('G:G', 20)
 
-        row += 2
-        sheet.merge_range(row, col, row, col + 3, "Rekap Faktur Akun Piutang Usaha", title_style)
+        row += 0
+        sheet.merge_range(row, col, row, col + 2, "Rekap Faktur Akun Piutang Usaha", title_style)
         row += 1
-        sheet.merge_range(row, col, row, col + 3, invoice.company_id.name, title_style)
+        sheet.merge_range(row, col, row, col + 2, invoice.company_id.name, title_style)
 
         row += 2
 
@@ -38,6 +39,7 @@ class AccountMoveRecap(models.AbstractModel):
         sheet.write(row, col + 3, "TANGGAL FAKTUR", header_table_style)
         sheet.write(row, col + 4, "AKUN", header_table_style)
         sheet.write(row, col + 5, "NOMINAL", header_table_style)
+        sheet.write(row, col + 6, "SISA", header_table_style)
 
         for no, inv in enumerate(invoice):
             row += 1
@@ -52,6 +54,7 @@ class AccountMoveRecap(models.AbstractModel):
                     sheet.write(row, col + 4, "{} - {}".format(account.account_id.code, account.account_id.name), body_table_tyle_else) 
 
                 sheet.write(row, col + 5, '{:,.0f}'.format(account.debit), body_table_tyle_idr)
+                sheet.write(row, col + 6, '{:,.0f}'.format(account.amount_residual), body_table_tyle_idr)
 
 
 
