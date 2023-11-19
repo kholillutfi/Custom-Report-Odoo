@@ -6,7 +6,6 @@
         General Features
         - Delivery Letter Report 
         - Invoice Deu
-        - Account Receivable Invoice Recap
         """,
 
     'description': """
@@ -22,7 +21,7 @@
 
     'author': "M. Kholil Lutfi",
     'company': 'PT. Cendana Teknika Utama',
-    'category': 'Reporting & Recap',
+    'category': 'Reporting',
     'version': '14.0.0.1',
     'sequence': 1,
     'installable': True,
@@ -31,7 +30,7 @@
     'license': 'LGPL-3', 
 
     # any module necessary for this one to work correctly
-    'depends': ['base','stock','account','report_xlsx'],
+    'depends': ['base','stock','account'],
 
     # always loaded
     'data': [
@@ -44,7 +43,6 @@
         'reports/invoice_deu_reports/invoice_deu_report_paperformat.xml',
         'reports/invoice_deu_reports/invoice_deu_report_template.xml',
         'reports/invoice_deu_reports/invoice_deu_report_actions.xml',
-        'reports/account_receivable_recap/account_receivable_recap_action.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
