@@ -22,7 +22,6 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
                             </tr>
                             <tr style="text-align: center">
                                 <td style="border: 1px solid; padding: 5px;">No</td>
@@ -33,14 +32,12 @@
                                 <td style="border: 1px solid; padding: 5px; width: 8%;">Penerimaan</td>
                                 <td style="border: 1px solid; padding: 5px; width: 8%;">Pengeluaran</td>
                                 <td style="border: 1px solid; padding: 5px; width: 8%;">Sisa Akhir</td>
-                                <td style="border: 1px solid; padding: 5px;">Ket</td>
                             </tr>
                             <t t-set="sequence" t-value="1"/>
 
                             <t t-if="product_all">
                                 <tr>
                                     <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_all_id"/></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -58,7 +55,6 @@
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"></td>
                                     </tr>
                                     <t t-set="sequence" t-value="sequence+1"/>
                                 </t>        
@@ -66,7 +62,6 @@
                             <t t-if="product_categ_1">
                                 <tr>
                                     <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_1_id"/></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -84,7 +79,6 @@
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"></td>
                                     </tr>
                                     <t t-set="sequence" t-value="sequence+1"/>
                                 </t>        
@@ -92,7 +86,6 @@
                             <t t-if="product_categ_2">
                                 <tr>
                                     <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_2_id"/></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -110,7 +103,6 @@
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"></td>
                                     </tr>
                                     <t t-set="sequence" t-value="sequence+1"/>
                                 </t>        
@@ -118,7 +110,6 @@
                             <t t-if="product_categ_3">
                                 <tr>
                                     <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_3_id"/></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -136,7 +127,6 @@
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"></td>
                                     </tr>
                                     <t t-set="sequence" t-value="sequence+1"/>
                                 </t>        
@@ -144,7 +134,6 @@
                             <t t-if="product_categ_4">
                                 <tr>
                                     <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_4_id"/></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -162,7 +151,6 @@
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"></td>
                                     </tr>
                                     <t t-set="sequence" t-value="sequence+1"/>
                                 </t>        
@@ -170,7 +158,6 @@
                             <t t-if="product_categ_5">
                                 <tr>
                                     <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_5_id"/></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -189,7 +176,6 @@
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"></td>
                                     </tr>
                                     <t t-set="sequence" t-value="sequence+1"/>
                                 </t>        
@@ -197,7 +183,6 @@
                             <t t-if="product_categ_6">
                                 <tr>
                                     <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_6_id"/></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -216,7 +201,6 @@
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"></td>
                                     </tr>
                                     <t t-set="sequence" t-value="sequence+1"/>
                                 </t>        
@@ -224,7 +208,6 @@
                             <t t-if="product_categ_cat_expense">
                                 <tr>
                                     <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_cat_expense_id"/></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -243,7 +226,6 @@
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"></td>
                                     </tr>
                                     <t t-set="sequence" t-value="sequence+1"/>
                                 </t>        
@@ -251,7 +233,6 @@
                             <t t-if="product_categ_consumable">
                                 <tr>
                                     <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_consumable_id"/></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -270,7 +251,6 @@
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
                                         <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"></td>
                                     </tr>
                                     <t t-set="sequence" t-value="sequence+1"/>
                                 </t>        
