@@ -35,9 +35,9 @@
                             </tr>
                             <t t-set="sequence" t-value="1"/>
 
-                            <t t-if="product_all">
+                            <t t-foreach="categ" t-as="cat">
                                 <tr>
-                                    <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_all_id"/></td>
+                                    <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="cat.name"/></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -45,215 +45,21 @@
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                <t t-foreach="product_all" t-as="stock">
-                                    <tr>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="sequence"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['code']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['product']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['uom']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_date_1']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                    </tr>
-                                    <t t-set="sequence" t-value="sequence+1"/>
-                                </t>        
-                            </t>
-                            <t t-if="product_categ_1">
-                                <tr>
-                                    <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_1_id"/></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <t t-foreach="product_categ_1" t-as="stock">
-                                    <tr>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="sequence"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['code']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['product']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['uom']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_date_1']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                    </tr>
-                                    <t t-set="sequence" t-value="sequence+1"/>
-                                </t>        
-                            </t>
-                            <t t-if="product_categ_2">
-                                <tr>
-                                    <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_2_id"/></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <t t-foreach="product_categ_2" t-as="stock">
-                                    <tr>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="sequence"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['code']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['product']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['uom']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_date_1']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                    </tr>
-                                    <t t-set="sequence" t-value="sequence+1"/>
-                                </t>        
-                            </t>
-                            <t t-if="product_categ_3">
-                                <tr>
-                                    <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_3_id"/></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <t t-foreach="product_categ_3" t-as="stock">
-                                    <tr>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="sequence"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['code']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['product']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['uom']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_date_1']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                    </tr>
-                                    <t t-set="sequence" t-value="sequence+1"/>
-                                </t>        
-                            </t>
-                            <t t-if="product_categ_4">
-                                <tr>
-                                    <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_4_id"/></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <t t-foreach="product_categ_4" t-as="stock">
-                                    <tr>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="sequence"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['code']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['product']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['uom']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_date_1']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                    </tr>
-                                    <t t-set="sequence" t-value="sequence+1"/>
-                                </t>        
-                            </t>
-                            <t t-if="product_categ_5">
-                                <tr>
-                                    <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_5_id"/></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <t t-foreach="product_categ_5" t-as="stock">
-                                    <tr>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="sequence"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['code']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['product']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['uom']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_date_1']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                    </tr>
-                                    <t t-set="sequence" t-value="sequence+1"/>
-                                </t>        
-                            </t>
-                            <t t-if="product_categ_6">
-                                <tr>
-                                    <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_6_id"/></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <t t-foreach="product_categ_6" t-as="stock">
-                                    <tr>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="sequence"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['code']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['product']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['uom']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_date_1']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                    </tr>
-                                    <t t-set="sequence" t-value="sequence+1"/>
-                                </t>        
-                            </t>
-                            <t t-if="product_categ_cat_expense">
-                                <tr>
-                                    <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_cat_expense_id"/></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <t t-foreach="product_categ_cat_expense" t-as="stock">
-                                    <tr>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="sequence"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['code']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['product']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['uom']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_date_1']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                    </tr>
-                                    <t t-set="sequence" t-value="sequence+1"/>
-                                </t>        
-                            </t>
-                            <t t-if="product_categ_consumable">
-                                <tr>
-                                    <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="product_categ_consumable_id"/></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <t t-foreach="product_categ_consumable" t-as="stock">
-                                    <tr>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="sequence"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['code']"/></td>
-                                        <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['product']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['uom']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_date_1']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
-                                        <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
-                                    </tr>
-                                    <t t-set="sequence" t-value="sequence+1"/>
-                                </t>        
+                                <t t-foreach="products" t-as="stock">
+                                    <t t-if="stock['categ'] == cat.id">
+                                        <tr>
+                                            <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="sequence"/></td>
+                                            <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['code']"/></td>
+                                            <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['product']"/></td>
+                                            <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['uom']"/></td>
+                                            <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_date_1']"/></td>
+                                            <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
+                                            <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
+                                            <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
+                                        </tr>
+                                        <t t-set="sequence" t-value="sequence+1"/>
+                                    </t>
+                                </t>
                             </t>
                         </table>
                     </div>
@@ -276,7 +82,7 @@
                             </div>
                         </div>
                     </footer>
-                    <footer class="footer-bottom" style="font-size: 13px; text-align: center;">
+                    <footer class="footer-bottom" style="font-size: 13px; text-align: center; position: fixed; bottom: 60px; left: 38%;">
                         Mengetahui, <br/> Direktur Administrasi dan Keuangan 
                     </footer>
                 </div>
