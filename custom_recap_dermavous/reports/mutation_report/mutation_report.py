@@ -9,7 +9,7 @@ class ReportMutation(models.AbstractModel):
     def _get_report_values(self, docids, data=None):
         Report = self.env['ir.actions.report']._get_report_from_name('custom_recap_dermavous.mutation_report_template')
         product_templates = self.env[Report.model].browse(data.get('product_template'))
-        stock_moves_lines = self.env['stock.move.line'].search([]).filtered(lambda t: t.product_id.id in product_templates.ids)
+        stock_moves_lines = self.env['stock.move.line'].search([('date','>=', data['start_date']), ('date','<=', data['end_date'])])
 
         products = [{
             'product': rec.name,
