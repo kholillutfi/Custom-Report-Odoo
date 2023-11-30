@@ -74,7 +74,7 @@
                                     <td style="border: 1px solid; padding: 10px 5px;"><t t-esc="line.product_id.name"/></td>
                                     <td style="border: 1px solid; padding: 10px 5px;"><t t-esc="line.lot_id.name"/></td>
                                     <t t-if="line.lot_id">
-                                        <td style="border: 1px solid; padding: 10px 5px;"><t t-esc="stock.calculate_date(line.product_id.expiration_time).strftime('%d %B %Y')"/></td>
+                                        <td style="border: 1px solid; padding: 10px 5px;"><t t-esc="line.lot_id.expiration_date.strftime('%d %B %Y')"/></td>
                                     </t>
                                     <t t-else="not line.lot_id">
                                         <td style="border: 1px solid; padding: 10px 5px;">-</td>
