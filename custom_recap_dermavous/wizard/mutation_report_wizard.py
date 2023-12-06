@@ -20,8 +20,35 @@ class MutationReportWizard(models.TransientModel):
         if self.categ_id:
             domain += [('categ_id','=', self.categ_id.id)]
 
-
         product_templates = self.env['product.template'].search(domain)
+
+        stock_moves_lines = self.env['stock.move.line'].search([('date','>=', self.start_date), ('date','<=', self.end_date)])
+
+        month = min(stock_moves_lines.mapped('date')).strftime('%m')
+        bfr_month = int(min(stock_moves_lines.mapped('date')).strftime('%m')) - 1
+
+        stock_lalu = self.env['stock.sisa.lalu'].search([])  
+
+        if not stock_lalu:
+            sisa_lalu = [{
+                'product_id': rec.id,
+                'sisa_akhir': int(sum(lines.qty_done for lines in stock_moves_lines.filtered(lambda y: y.product_id.id == rec.id and y.location_id.usage != 'internal')) - sum(lines.qty_done for lines in stock_moves_lines.filtered(lambda y: y.product_id.id == rec.id and y.location_id.usage == 'internal'))),
+                'month': month
+                } for rec in product_templates] 
+            stock_lalu.create(sisa_lalu)
+
+        sisa_lalu = [{
+            'product_id': rec.id,
+            'sisa_akhir': int(((sum(sisa.sisa_akhir for sisa in stock_lalu.filtered(lambda s: s.month == bfr_month and s.product_id.id == rec.id))+sum(lines.qty_done for lines in stock_moves_lines.filtered(lambda y: y.product_id.id == rec.id and y.location_id.usage != 'internal')))) - sum(lines.qty_done for lines in stock_moves_lines.filtered(lambda y: y.product_id.id == rec.id and y.location_id.usage == 'internal'))),
+            'month': month
+            } for rec in product_templates]
+        
+        if stock_lalu:
+            self.env['stock.sisa.lalu'].search([('month','=',month)]).unlink()
+
+            logger.info(stock_lalu)
+
+            stock_lalu.create(sisa_lalu)
 
         if product_templates:
             return ir_action_report.report_action(docids = product_templates.ids,
