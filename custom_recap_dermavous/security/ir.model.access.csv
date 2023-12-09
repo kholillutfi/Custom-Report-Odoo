@@ -1,4 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mutation_report_wizard,access_mutation_report_wizard,model_mutation_report_wizard,,1,1,1,1
-access_stock_sisa_lalu,access_stock_sisa_lalu,model_stock_sisa_lalu,,1,1,1,1
 

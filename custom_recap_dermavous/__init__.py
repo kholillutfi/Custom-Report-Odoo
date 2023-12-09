@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import controllers, models, reports, wizard
+from . import controllers, models, reports
