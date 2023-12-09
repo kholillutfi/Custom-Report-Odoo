@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <template id="mutation_report_template">
+            <t t-call="web.html_container">
+                <div class="page" style="padding: 5px; margin-bottom: 20px; background-color: white;">
+                    <header class="title" style="text-align: center; margin-bottom: 20px;">
+                        <h3 style="margin-bottom: -10px;"><t t-esc="company"/><br/>
+                            LAPORAN STOCK
+                        </h3>
+                        <hr style="border: 1px solid black; width: 19%;"/>
+                    </header>
+                    <div class="body" style="margin-bottom: 5px;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                            <tr>
+                                <td style="text-align: center;">Bulan</td>
+                                <td colspan="2"><t t-esc="start_date"/> - <t t-esc="end_date"/></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr style="text-align: center">
+                                <td style="border: 1px solid; padding: 5px;">No</td>
+                                <td style="border: 1px solid; padding: 5px;">Kode Barang</td>
+                                <td style="border: 1px solid; padding: 5px; width: 30%;">Nama Barang</td>
+                                <td style="border: 1px solid; padding: 5px;">Sat</td>
+                                <td style="border: 1px solid; padding: 5px; width: 8%;">Sisa Lalu</td>
+                                <td style="border: 1px solid; padding: 5px; width: 8%;">Penerimaan</td>
+                                <td style="border: 1px solid; padding: 5px; width: 8%;">Pengeluaran</td>
+                                <td style="border: 1px solid; padding: 5px; width: 8%;">Sisa Akhir</td>
+                            </tr>
+                            <t t-set="sequence" t-value="1"/>
+
+                            <t t-foreach="categ" t-as="cat">
+                                <tr>
+                                    <td colspan="2" style="padding-bottom: 5px; padding-top: 5px;">Kategori : <t t-esc="cat.name"/></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <t t-foreach="products" t-as="stock">
+                                    <t t-if="stock['categ'] == cat.id">
+                                        <tr>
+                                            <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="sequence"/></td>
+                                            <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['code']"/></td>
+                                            <td style="border: 1px solid; padding: 5px;"><t t-esc="stock['product']"/></td>
+                                            <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['uom']"/></td>
+                                            <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_date_1']"/></td>
+                                            <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_in']"/></td>
+                                            <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['stock_out']"/></td>
+                                            <td style="border: 1px solid; padding: 5px; text-align: center"><t t-esc="stock['sisa']"/></td>
+                                        </tr>
+                                        <t t-set="sequence" t-value="sequence+1"/>
+                                    </t>
+                                </t>
+                            </t>
+                        </table>
+                    </div>
+                    <footer class="footer-top" style="display: -webkit-box; width: 100%; font-size: 13px;">
+                        <div class="right-foot" style="text-align: center; width: 50%; padding-top: 10px;">
+                            <div class="top" style="margin-bottom: 40px;">
+                                Diperiksa <br/> Kabag Umum
+                            </div>
+                            <div class="bottom">
+                                <span style="border-bottom: 1px solid black;">Putut Sukarno,SS</span> <br/> NPP .71 01 57
+                            </div>
+                        </div>
+
+                            <div class="left-foot" style="text-align: center; width: 50%; padding-top: 10px;">
+                            <div class="top" style="margin-bottom: 40px;">
+                                <t t-esc="company_city"/>, <t t-esc="start_date"/> - <t t-esc="end_date"/> <br/> Di Buat Kasubag Gudang dan Perbekalan
+                            </div>
+                            <div class="bottom">
+                                <span style="border-bottom: 1px solid black;">Setyo Hirmawan</span> <br/> NPP .71 01 42
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </t>        
+        </template>    
+    </data>
+    
+
+</odoo>
