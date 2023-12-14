@@ -26,7 +26,7 @@ class MutationReportWizard(models.TransientModel):
         stock_moves_all = self.env['stock.move.line'].search([])
         stock_lalu = self.env['stock.sisa.lalu'].search([])  
 
-        month = int(min(stock_moves_lines.mapped('date')).strftime('%m'))
+        month = int(min(stock_moves_lines.mapped('date')).strftime('%m')) if stock_moves_lines else 0
 
         move_all = [{
             'date': rec.date.strftime('%m')

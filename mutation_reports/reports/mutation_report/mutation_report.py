@@ -12,7 +12,7 @@ class ReportMutation(models.AbstractModel):
         stock_moves_lines = self.env['stock.move.line'].search([('date','>=', data['start_date']), ('date','<=', data['end_date'])])
 
         stock_lalu = self.env['stock.sisa.lalu'].search([])
-        bfr_month = int(min(stock_moves_lines.mapped('date')).strftime('%m')) - 1
+        bfr_month = int(min(stock_moves_lines.mapped('date')).strftime('%m')) - 1 if stock_moves_lines else 0
 
         products = [{
             'product': rec.name,
