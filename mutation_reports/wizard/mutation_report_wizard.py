@@ -26,30 +26,24 @@ class MutationReportWizard(models.TransientModel):
         stock_moves_all = self.env['stock.move.line'].search([])
         stock_lalu = self.env['stock.sisa.lalu'].search([])  
 
-        month = int(min(stock_moves_lines.mapped('date')).strftime('%m')) if stock_moves_lines else 0
+        month = int(self.start_date.strftime('%m'))
+        m1 = min(stock_moves_all.mapped('date'))
+        m2 = self.start_date
+        months = relativedelta.relativedelta(m2, m1)
+        total_months = months.months
+        for m in range(total_months+1):
+            list_month = m1 + relativedelta.relativedelta(months=+m)
+            list_month_res = int(list_month.strftime('%m'))
+            month_lalu = list_month + relativedelta.relativedelta(months=-1)
+            month_lalu_res = int(month_lalu.strftime('%m'))
 
-        move_all = [{
-            'date': rec.date.strftime('%m')
-        }for rec in stock_moves_all]
-        
-        date = [rec['date'] for rec in move_all]
-
-        month_set = list(set(date))
-        int_month = [eval(e) for e in month_set]
-
-        sorted_month = sorted(int_month, key=lambda x: x)
-
-        for bfr_month in sorted_month:
-            if bfr_month != month:
-                month_sisa_lalu = bfr_month - 1        
-                sisa_lalu = [{
-                    'product_id': rec.id,
-                    'sisa_akhir': int(((sum(sisa.sisa_akhir for sisa in stock_lalu.filtered(lambda s: s.month == month_sisa_lalu and s.product_id.id == rec.id))+sum(lines.qty_done for lines in stock_moves_all.filtered(lambda y: y.product_id.id == rec.id and y.location_id.usage != 'internal' and int(y.date.strftime('%m')) == bfr_month)))) - sum(lines.qty_done for lines in stock_moves_all.filtered(lambda y: y.product_id.id == rec.id and y.location_id.usage == 'internal' and int(y.date.strftime('%m')) == bfr_month))),
-                    'month': bfr_month
-                    } for rec in product_templates] 
+            sisa_lalu = [{
+                'product_id': rec.id,
+                'sisa_akhir': int(((sum(sisa.sisa_akhir for sisa in stock_lalu.filtered(lambda s: int(s.bulan.strftime('%m')) == month_lalu_res and s.product_id.id == rec.id))+sum(lines.qty_done for lines in stock_moves_all.filtered(lambda y: y.product_id.id == rec.id and y.location_id.usage != 'internal' and int(y.date.strftime('%m')) == list_month_res)))) - sum(lines.qty_done for lines in stock_moves_all.filtered(lambda y: y.product_id.id == rec.id and y.location_id.usage == 'internal' and int(y.date.strftime('%m')) == list_month_res))) if min(stock_lalu.mapped('bulan')) else int(((sum(lines.qty_done for lines in stock_moves_all.filtered(lambda y: y.product_id.id == rec.id and y.location_id.usage != 'internal' and int(y.date.strftime('%m')) == list_month_res)))) - sum(lines.qty_done for lines in stock_moves_all.filtered(lambda y: y.product_id.id == rec.id and y.location_id.usage == 'internal' and int(y.date.strftime('%m')) == list_month_res))),
+                'bulan': list_month
+                } for rec in product_templates] 
+            stock_lalu.create(sisa_lalu)
             
-                stock_lalu.create(sisa_lalu)
-
         if stock_lalu:
             stock_lalu.unlink()
 

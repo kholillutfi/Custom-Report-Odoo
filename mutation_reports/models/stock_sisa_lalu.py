@@ -6,4 +6,5 @@ class StockSisaLalu(models.Model):
 
     product_id = fields.Many2one('product.template', string='product')
     sisa_akhir = fields.Integer(string='Sisa Akhir')
-    month = fields.Integer('Month')
+    bulan = fields.Date('bulan')
+    
